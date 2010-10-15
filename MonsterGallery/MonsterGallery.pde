@@ -5,7 +5,7 @@ Minim minim;
 
 
 public void setup() {
-  size(1000,200);
+  size(600,600);
   minim = new Minim(this);  
   monsters = new ArrayList();
 
@@ -22,8 +22,12 @@ public void draw()
   {
   
     Monster m = (Monster) monsters.get(i);
-   
-    int xpos = i * 200; int ypos = 0;
+    
+    int xpos = i * 200; int ypos = 200 * (i/3);
+    
+    if (xpos > 400)
+        xpos -= 600 * (i/3);
+    
    
     m.checkIfMouseOver(xpos, ypos, mouseX, mouseY);
   
