@@ -11,7 +11,7 @@ public class MyInterface extends PApplet
    Textlabel t;
    
    Float totalArea;
-   public int number = 2;
+   int number = 2;
 
    Map<String, List<Geometry>> shapeMap = new HashMap<String, List<Geometry>>();
    
@@ -25,6 +25,7 @@ public void setup()
   size(800,400);
   smooth();
   noStroke();
+  background(255);
 
   cp5 = new ControlP5(this);
   cp5.setControlFont(new ControlFont(createFont("Helvetica",8), 8));
@@ -42,9 +43,9 @@ public void setup()
   n.setMax(50);
   n.setMin(1);
 
-  for (int i = 0; i < number; i++)
+  for (int i = 0; i < 50; i++)
   {
-      circles.add(new Circle());
+      circles.add(new Circle(this));
   }
   
   shapeMap.put("Circles", circles);
@@ -55,21 +56,30 @@ public void setup()
 
  public void draw()
  {
-    background(0);
+    Geometry LG;
+    background(255);
+
 
     if((l.value() == 1) &&(b.booleanValue() == true))
     {
         List<Geometry> currentList = shapeMap.get("Circles");
 
+
         for (int i = 0; i < number; i++)
         {
-            circles.get(i).render();
+            LG=circles.get(i);
+            LG.render();
         }
     }
+    else
+    n.update();
     
   }
 
-
+ public void number(int foo)
+ {
+    number = foo;
+ }
 
 public static void main(String[] args)
   {
